@@ -15,21 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *****************************************************************************/
-
-/**
- * Loads a JSON file from the local file system.
- * @param name The name of the file
- */
-function load_file(content: string)
+ 
+function has_class(e: HTMLElement, c: string)
 {
-		console.log(content);
+		var list = e.classList as DOMTokenList;
+		return list.contains(c);
 }
 
-/**
- * Executed when the page is loaded.
- */
-function on_page_load()
+function add_class(e: HTMLElement, c: string)
 {
-
+		var list = e.classList as DOMTokenList;
+		list.add(c);
 }
 // :mode=javascript:tabSize=2:tabIndent=2:

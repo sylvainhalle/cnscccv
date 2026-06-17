@@ -1,0 +1,50 @@
+$col_cell   : #eef;
+$col_border : #aaa;
+$radius     : 3px;
+
+body {
+	font-family: sans-serif;
+}
+
+header {
+	width: 1024px;
+	height: 118px;
+	background: url('../img/header.jpg') no-repeat;
+	margin: auto;
+	display: flex;
+	
+	h1 {
+		text-align: center;
+		align-self: last baseline;
+		margin-bottom: 6px;
+		color: white;
+		text-shadow: 2px 2px black;
+		width: 100%;
+	}
+}
+
+input.field {
+	background: $col_cell;
+	border: 1px solid $col_border;
+	border-radius: $radius;
+}
+
+input.field.dirty {
+	border-color: red;
+	border-width: 2px;
+	font-weight: bold;
+}
+
+section.category {
+	border: 1px solid $col_border;
+	padding: 6px;
+	
+	summary {
+		font-size: 120%;
+		font-weight: bold;
+		background: #eee;
+		padding: 4px;
+		border-radius: $col_border;
+	}
+}
+// :mode=css:

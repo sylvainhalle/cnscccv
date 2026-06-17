@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "strict": true
+    },
+    "files": [
+    	"cv.ts",
+    	"data.inc.ts",
+    	"dom.inc.ts",
+    	"templates.inc.ts"
+    ]
+}

@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>The Canadian not-so-common-CV</title>
-<script src="cv.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="cv.css" />
+<script src="../js/cv.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../css/cv.css" />
 </head>
 <body>
 
@@ -22,6 +22,18 @@ JavaScript.</strong></p>
   <li><input type="file" accept="application/json" id="btnfile" onchange="this.files[0].text().then(t => load_file(t))"> 
 </ul>
 </nav>
+
+<section class="category" id="sec_personal">
+<details>
+<summary>Personal Information</summary>
+</details>
+</section>
+
+<section class="category" id="sec_education">
+<details>
+<summary>Education</summary>
+</details>
+</section>
 
 
 <!-- %%SCRIPT%% -->
