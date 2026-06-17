@@ -1,0 +1,8 @@
+*~
+\#*
+*.tmp
+cv.js
+cv.html
+cv.css
+.sass-cache
+cv.css.map
