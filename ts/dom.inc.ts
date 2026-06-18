@@ -27,4 +27,10 @@ function add_class(e: HTMLElement, c: string)
 		var list = e.classList as DOMTokenList;
 		list.add(c);
 }
+
+function remove_class(e: HTMLElement, c: string)
+{
+		var list = e.classList as DOMTokenList;
+		list.remove(c);
+}
 // :mode=javascript:tabSize=2:tabIndent=2:

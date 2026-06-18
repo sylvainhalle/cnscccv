@@ -20,8 +20,8 @@
 interface CVData
 {
 	header:     HeaderData,
-	personal?:  PersonalData,
-	education?: EducationData[]
+	personal:   PersonalData,
+	education:  EducationData[]
 }
 
 interface HeaderData
@@ -45,5 +45,33 @@ interface EducationData
 	school:  string,
 	city:    string,
 	country: string
+}
+
+function get_empty_cv(): CVData
+{
+	return {
+		header: {
+				version:   "1.0",
+				timestamp: Date.now()
+		},
+		personal: {
+				first: "",
+				last: "",
+				email: ""
+		},
+		education: []
+	}
+}
+
+function get_empty_education(): EducationData
+{
+		return {
+			degree:  "",
+			start:   "",
+			end:     "",
+			school:  "",
+			city:    "",
+			country: ""
+		}
 }
 // :mode=javascript:tabSize=2:tabIndent=2:

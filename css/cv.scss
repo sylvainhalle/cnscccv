@@ -5,22 +5,28 @@ $icon_type  : 'svg';
 
 body {
 	font-family: sans-serif;
+	margin: auto;
+	width: 1024px;
 }
 
-header {
+hgroup {
 	width: 1024px;
 	height: 118px;
 	background: url('../img/header.jpg') no-repeat;
 	margin: auto;
 	display: flex;
 	
-	h1 {
+	h1, p {
 		text-align: center;
 		align-self: last baseline;
 		margin-bottom: 6px;
 		color: white;
 		text-shadow: 2px 2px black;
 		width: 100%;
+	}
+	
+	p {
+		font-style: italic;
 	}
 }
 
@@ -36,9 +42,11 @@ input.field.dirty {
 	font-weight: bold;
 }
 
-section.category {
+.category {
 	border: 1px solid $col_border;
 	padding: 6px;
+	margin-bottom: 12px;
+	display: block;
 	
 	summary {
 		font-size: 120%;
@@ -50,6 +58,24 @@ section.category {
 	
 	.category {
 		margin-left: 20px;
+	}
+}
+
+section > details > summary {
+	display: flex;
+	justify-content: space-between;
+	
+	span {
+		
+	}
+	
+	a {
+		width: 24px;
+		height: 24px;
+		background: url("../img/icn-add.#{$icon_type}");
+		background-repeat: no-repeat;
+		background-origin: content-box;
+		background-size: contain;
 	}
 }
 
@@ -100,14 +126,16 @@ section.category {
 			}
 		}
 		
-		
-		
 		li#btnsave {
 			background-image: url("../img/icn-disk.#{$icon_type}");
 		}
 		
 		li#btnhelp {
 			background-image: url("../img/icn-interrogation.#{$icon_type}");
+		}
+		
+		li.greyedout {
+			opacity: 0.5;
 		}
 	}
 }

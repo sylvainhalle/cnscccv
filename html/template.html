@@ -2,6 +2,8 @@
 <html>
 <head>
 <title>The Canadian not-so-common-CV</title>
+<meta charset="utf-8"/>
+<link rel="shortcut icon" href="../img/favicon.ico"/>
 <script src="../js/cv.js" type="text/javascript"></script>
 <!-- %%CSS%% --><link rel="stylesheet" type="text/css" href="../css/cv.css" />
 </head>
@@ -13,9 +15,10 @@
 JavaScript.</strong></p>
 </noscript>
 
-<header>
+<hgroup>
 <h1>The Canadian not-so-common CV</h1>
-</header>
+<!-- <p>Your career, your data</p> -->
+</hgroup>
 
 <nav id="toolbar">
 <ul>
@@ -25,7 +28,7 @@ JavaScript.</strong></p>
   <li id="btnload">
   	<label title="Open a CV from a local file" for="btnload_elem"></label><input type="file" accept="application/json" id="btnload_elem" onchange="this.files[0].text().then(t => load_file(t))"/>
   </li>
-  <li id="btnsave">
+  <li id="btnsave" class="greyedout">
   	<a title="Save the current CV" href="data:application/json;charset=utf-8,{}" download="cv.json" onmousedown="update_url()"></a>
   </li>
   <li id="btnhelp">
@@ -36,13 +39,13 @@ JavaScript.</strong></p>
 
 <section class="category" id="sec_personal">
 <details>
-<summary>Personal Information</summary>
+<summary><span>Personal Information</span></summary>
 </details>
 </section>
 
 <section class="category" id="sec_education">
 <details>
-<summary>Education</summary>
+<summary><span>Education</span><a href="#" onclick="add_education()"></a></summary>
 <div id="sec_education_contents" class="category">
 </div>
 </details>
