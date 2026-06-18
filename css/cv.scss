@@ -2,6 +2,8 @@ $col_cell   : #eef;
 $col_border : #aaa;
 $radius     : 3px;
 $icon_type  : 'svg';
+$btn_size   : 48px;
+$bg_category: #eee;
 
 body {
 	font-family: sans-serif;
@@ -11,18 +13,21 @@ body {
 
 hgroup {
 	width: 1024px;
-	height: 118px;
+	height: 117px;
 	background: url('../img/header.jpg') no-repeat;
 	margin: auto;
 	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 	
 	h1, p {
 		text-align: center;
 		align-self: last baseline;
-		margin-bottom: 6px;
+		margin: 0;
 		color: white;
 		text-shadow: 2px 2px black;
 		width: 100%;
+		padding: 1px;
 	}
 	
 	p {
@@ -45,13 +50,14 @@ input.field.dirty {
 .category {
 	border: 1px solid $col_border;
 	padding: 6px;
-	margin-bottom: 12px;
+	margin-top: 6px;
+	margin-bottom: 6px;
 	display: block;
 	
 	summary {
 		font-size: 120%;
 		font-weight: bold;
-		background: #eee;
+		background: $bg_category;
 		padding: 4px;
 		border-radius: $col_border;
 	}
@@ -80,13 +86,18 @@ section > details > summary {
 }
 
 #toolbar {
-	ul {
+	display: flex;
+	justify-content: space-between;
+	
+	ul:first-child {
 		list-style-type: none;
+		padding-left: 0px;
+		display: flex;
 		
 		li {
 			display: inline-block;
-			width: 48px;
-			height: 48px;
+			width: $btn_size;
+			height: $btn_size;
 			background-size: contain;
 			background-color: #aaa;
 			background-origin: content-box;
@@ -95,6 +106,11 @@ section > details > summary {
 			border-radius: $radius;
 			background-repeat: no-repeat;
 			box-shadow: 2px 2px #666;
+			margin-left: 6px;
+		}
+		
+		li:first-child {
+			margin-left: 0px;
 		}
 		
 		a {
@@ -130,6 +146,10 @@ section > details > summary {
 			background-image: url("../img/icn-disk.#{$icon_type}");
 		}
 		
+		li#btnfilter {
+			background-image: url("../img/icn-bars-filter.#{$icon_type}");
+		}
+		
 		li#btnhelp {
 			background-image: url("../img/icn-interrogation.#{$icon_type}");
 		}
@@ -138,6 +158,88 @@ section > details > summary {
 			opacity: 0.5;
 		}
 	}
+	
+	ul#breadcrumbs {
+		align-self: center;
+		padding-left: 0px;
+		list-style-type: none;
+		
+		li {
+			display: inline-block;
+			margin-left: 0.5em;
+			text-transform: capitalize;
+		}
+		
+		li::before {
+			content: '> ';
+		}
+		
+		li:first-child {
+			background: url("../img/icn-marker.#{$icon_type}") left no-repeat;
+			background-size: contain;
+			padding-left: 20pt;
+			margin-left: 0px;
+		}
+		
+		li:first-child::before {
+			content: '';
+		}
+	}
+}
+
+#publications {
+	summary {
+		display: flex;
+		justify-content: space-between;
+		a {
+			width: 24px;
+			height: 24px;
+			background: url("../img/icn-add.#{$icon_type}");
+			background-repeat: no-repeat;
+			background-origin: content-box;
+			background-size: contain;
+			align-self: center;
+		}
+	}
+	
+	#publications_journals summary, #publications_conferences summary {
+		font-size: 100%;
+		font-style: italic;
+	}
+}
+
+summary > span {
+	padding: 2px;
+	margin-left: 32pt;
+}
+
+summary:has(+div[id='education']) {
+	background: $bg_category left center no-repeat;
+	background-size: contain;
+	background-image: url("../img/icn-user-graduate.#{$icon_type}");
+	background-origin: content-box;
+
+}
+
+summary:has(+div[id='personal']) {
+	background: $bg_category left center no-repeat;
+	background-size: contain;
+	background-image: url("../img/icn-clipboard-user.#{$icon_type}");
+	background-origin: content-box;
+}
+
+summary:has(+div[id='publications']) {
+	background: $bg_category left center no-repeat;
+	background-size: contain;
+	background-image: url("../img/icn-newspaper.#{$icon_type}");
+	background-origin: content-box;
+}
+
+summary#education_entry {
+	background: $bg_category left center no-repeat;
+	background-size: contain;
+	background-image: url("../img/icn-school.#{$icon_type}");
+	background-origin: content-box;
 }
 
 // :mode=css:

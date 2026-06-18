@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>The Canadian not-so-common-CV</title>
+<title>The Canadian (not-so)-common-CV</title>
 <meta charset="utf-8"/>
 <link rel="shortcut icon" href="../img/favicon.ico"/>
 <script src="../js/cv.js" type="text/javascript"></script>
@@ -17,7 +17,7 @@ JavaScript.</strong></p>
 
 <hgroup>
 <h1>The Canadian not-so-common CV</h1>
-<!-- <p>Your career, your data</p> -->
+<p>Your career, your data</p>
 </hgroup>
 
 <nav id="toolbar">
@@ -31,26 +31,54 @@ JavaScript.</strong></p>
   <li id="btnsave" class="greyedout">
   	<a title="Save the current CV" href="data:application/json;charset=utf-8,{}" download="cv.json" onmousedown="update_url()"></a>
   </li>
+  <li id="btnfilter">
+  	<a title="Filter contents of CV" onclick="filter_params()"></a>
+  </li>
   <li id="btnhelp">
   	<a title="Help" onclick="show_help()"></a>
   </li>
 </ul>
+<ul id="breadcrumbs">
+<li><a href="#">Home</a></li>
+</ul>
 </nav>
 
+<!-- Personal Information -->
 <section class="category" id="sec_personal">
-<details>
-<summary><span>Personal Information</span></summary>
-</details>
+  <details>
+    <summary><span>Personal Information</span></summary>
+    <div id="personal" class="category"></div>
+  </details>
 </section>
 
+<!-- Education -->
 <section class="category" id="sec_education">
-<details>
-<summary><span>Education</span><a href="#" onclick="add_education()"></a></summary>
-<div id="sec_education_contents" class="category">
-</div>
-</details>
+  <details>
+    <summary><span>Education</span><a href="#" onclick="add_entry('education')"></a></summary>
+    <div id="education" class="category"></div>
+  </details>
 </section>
 
+<!-- Publications -->
+<section class="category" id="sec_publications">
+  <details>
+    <summary><span>Publications</span></summary>
+    <div id="publications" class="category">
+      <details>
+        <summary><span>Journal Papers  (<span id="publications_journals_length">0</span>)</span><a href="#" onclick="add_journal()"></a></summary>
+        <div id="publications_journals" class="category"></div>
+      </details>
+      <details>
+        <summary><span>Conference Papers (<span id="publications_conferences_length">0</span>)</span> <a href="#" onclick="add_conference()"></a></summary>
+        <div id="publications_conferences" class="category"></div>
+      </details>
+    </div>
+  </details>
+</section>
+
+<footer>
+<p>Version 1.0. &copy; Sylvain Hallé, Université du Québec à Chicoutimi</p>
+</footer>
 
 <!-- %%SCRIPT%% -->
 <script type="text/javascript">

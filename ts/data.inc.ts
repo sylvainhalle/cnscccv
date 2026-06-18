@@ -19,9 +19,10 @@
 /* Data model for the CV */
 interface CVData
 {
-	header:     HeaderData,
-	personal:   PersonalData,
-	education:  EducationData[]
+	header:       HeaderData,
+	personal:     PersonalData,
+	education:    EducationData[],
+	publications: PublicationsData
 }
 
 interface HeaderData
@@ -47,6 +48,57 @@ interface EducationData
 	country: string
 }
 
+interface PublicationsData
+{
+	journals:    JournalData[],
+	conferences: ConferenceData[]
+}
+
+interface JournalData
+{
+	key:       string,
+	title:     string,
+	author:    string,
+	journal:   string,
+	editor:    string,
+	pages:     string,
+	number:    string,
+	volume:    string,
+	year:      Number,
+	publisher: string
+	doi:       string,
+	impact:    Number
+}
+
+interface ConferenceData
+{
+	key:         string,
+	title:       string,
+	author:      string,
+	proceedings: string,
+	editor:      string,
+	pages:       string,
+	year:        Number,
+	publisher:   string
+	doi:         string,
+	rate:        Number
+}
+
+const SECTIONS = {
+  education: {
+    path: "education",
+    container: "education",
+    empty: get_empty_education,
+    title: (e: any) => `${e.school} (${e.degree})`,
+    fields: [
+      ["school", "Institution"],
+      ["degree", "Degree"],
+      ["start", "Start"],
+      ["end", "End"]
+    ]
+  }
+};
+
 function get_empty_cv(): CVData
 {
 	return {
@@ -59,8 +111,12 @@ function get_empty_cv(): CVData
 				last: "",
 				email: ""
 		},
-		education: []
-	}
+		education: [],
+		publications: {
+				journals: [],
+				conferences: []
+		}
+	};
 }
 
 function get_empty_education(): EducationData
@@ -73,5 +129,39 @@ function get_empty_education(): EducationData
 			city:    "",
 			country: ""
 		}
+}
+
+function get_empty_conference(): ConferenceData
+{
+		return {
+	key:         "",
+	title:       "",
+	author:      "",
+	proceedings: "",
+	editor:      "",
+	pages:       "",
+	year:        null,
+	publisher:   "",
+	doi:         "",
+	rate:        null
+};
+}
+
+function get_empty_journal(): JournalData
+{
+		return {
+	key:       "",
+	title:     "",
+	author:    "",
+	journal:   "",
+	editor:    "",
+	pages:     "",
+	number:    "",
+	volume:    "",
+	year:      null,
+	publisher: "",
+	doi:       "",
+	impact:    null
+};
 }
 // :mode=javascript:tabSize=2:tabIndent=2:

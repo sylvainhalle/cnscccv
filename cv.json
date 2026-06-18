@@ -27,5 +27,41 @@
 			"city"    : "Bedrock",
 			"country" : "Pangea"
 		}
-	]
+	],
+	
+	"publications": {
+		"conferences": [
+			
+		],
+		"journals": [
+			{
+				"key":       "paleo-2050",
+				"title":     "Hitting rocks makes sparks",
+				"author":    "Fred Flintstone",
+				"journal":   "Journal of Ancient Geology",
+				"editor":    "F. Stone",
+				"pages":     "56-93",
+				"number":    "1",
+				"volume":    "1",
+				"year":      -2050,
+				"publisher": "Springrock",
+				"doi":       "1.1/1",
+				"impact":    2.5
+			},
+			{
+				"key":       "",
+				"title":     "",
+				"author":    "",
+				"journal":   "",
+				"editor":    "",
+				"pages":     "",
+				"number":    "",
+				"volume":    "",
+				"year":      null,
+				"publisher": "",
+				"doi":       "",
+				"impact":    null
+			}
+		]
+	}
 }
