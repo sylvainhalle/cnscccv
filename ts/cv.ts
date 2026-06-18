@@ -14,7 +14,35 @@ function load_file(content: string)
 		globalThis.CV = obj;
 		globalThis.DIRTY = false;
 		populate();
+		on_page_load();
 }
+
+/**
+ * Saves the content of the CV to a file.
+ */
+async function save_file()
+{
+	const opts = {
+		suggestedName: 'cv.json', // Default file name
+		types: [
+				{
+						description: 'JSON files',
+						accept: { 'application/json': ['.json'] }
+				},
+		]};
+    try
+    {
+        const fileHandle = await (<any>window).showSaveFilePicker(opts);
+        const writable = await fileHandle.createWritable();
+        await writable.write(JSON.stringify(globalThis.CV));
+        await writable.close();
+    }
+    catch (error)
+    {
+        console.error('Error showing save file picker:', error);
+    }
+}
+
 
 /**
  * Fills the interface with CV data.
@@ -39,13 +67,14 @@ function populate_personal()
 function populate_education()
 {
 	var ed = globalThis.CV.education as EducationData[];
-	var sec = document.getElementById("sec_education");
+	var sec = document.getElementById("sec_education_contents");
 	if (sec != null)
 	{
+		var html = "";
 		for (var i = 0; i < ed.length; i++)
 		{
 				var e = ed[i];
-				var html = education_template(e, i);
+				html += education_template(e, i);
 		}
 		sec.innerHTML = sec.innerHTML + html;
 	}

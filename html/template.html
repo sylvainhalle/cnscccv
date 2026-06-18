@@ -3,7 +3,7 @@
 <head>
 <title>The Canadian not-so-common-CV</title>
 <script src="../js/cv.js" type="text/javascript"></script>
-<link rel="stylesheet" type="text/css" href="../css/cv.css" />
+<!-- %%CSS%% --><link rel="stylesheet" type="text/css" href="../css/cv.css" />
 </head>
 <body>
 
@@ -17,9 +17,20 @@ JavaScript.</strong></p>
 <h1>The Canadian not-so-common CV</h1>
 </header>
 
-<nav>
+<nav id="toolbar">
 <ul>
-  <li><input type="file" accept="application/json" id="btnfile" onchange="this.files[0].text().then(t => load_file(t))"> 
+  <li id="btnnew">
+  	<a title="Creates a new blank CV"></a>
+  </li>
+  <li id="btnload">
+  	<label title="Open a CV from a local file" for="btnload_elem"></label><input type="file" accept="application/json" id="btnload_elem" onchange="this.files[0].text().then(t => load_file(t))">
+  </li>
+  <li id="btnsave">
+  	<a title="Save the current CV" href="data:application/json;charset=utf-8,{}" download="cv.json"></a>
+  </li>
+  <li id="btnhelp">
+  	<a title="Help" onclick="show_help()"></a>
+  </li>
 </ul>
 </nav>
 
@@ -32,6 +43,8 @@ JavaScript.</strong></p>
 <section class="category" id="sec_education">
 <details>
 <summary>Education</summary>
+<div id="sec_education_contents" class="category">
+</div>
 </details>
 </section>
 

@@ -1,6 +1,7 @@
 $col_cell   : #eef;
 $col_border : #aaa;
 $radius     : 3px;
+$icon_type  : 'svg';
 
 body {
 	font-family: sans-serif;
@@ -46,5 +47,60 @@ section.category {
 		padding: 4px;
 		border-radius: $col_border;
 	}
+	
+	.category {
+		margin-left: 20px;
+	}
 }
+
+#toolbar {
+	ul {
+		list-style-type: none;
+		
+		li {
+			display: inline-block;
+			width: 48px;
+			height: 48px;
+			background-size: contain;
+			background-color: #aaa;
+			background-origin: content-box;
+			padding: 4px;
+			border: solid 2px grey;
+			border-radius: $radius;
+			background-repeat: no-repeat;
+			box-shadow: 2px 2px #666;
+		}
+		
+		li:hover {
+			transform: translateX(2px) translateY(2px);
+			box-shadow: none;
+		}
+		
+		li#btnnew {
+			background-image: url("../img/icn-add-document.#{$icon_type}");
+		}
+		
+		li#btnload {
+			background-image: url("../img/icn-folder-open.#{$icon_type}");
+			
+			label {
+				width: 48px;
+				height: 48px;
+			}
+		}
+		
+		li#btnsave {
+			background-image: url("../img/icn-disk.#{$icon_type}");
+		}
+		
+		li#btnhelp {
+			background-image: url("../img/icn-interrogation.#{$icon_type}");
+		}
+	}
+
+	#btnload_elem {
+		display: none;
+	}
+}
+
 // :mode=css:

@@ -13,6 +13,14 @@
 			"end"     : "-2051-01-01",
 			"city"    : "Bedrock",
 			"country" : "Pangea"
+		},
+		{
+			"school"  : "Bedrock University",
+			"degree"  : "M.Sc.",
+			"start"   : "-2051-01-01",
+			"end"     : "-2049-01-01",
+			"city"    : "Bedrock",
+			"country" : "Pangea"
 		}
 	]
 }
