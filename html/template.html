@@ -26,7 +26,7 @@ JavaScript.</strong></p>
   	<label title="Open a CV from a local file" for="btnload_elem"></label><input type="file" accept="application/json" id="btnload_elem" onchange="this.files[0].text().then(t => load_file(t))">
   </li>
   <li id="btnsave">
-  	<a title="Save the current CV" href="data:application/json;charset=utf-8,{}" download="cv.json"></a>
+  	<a title="Save the current CV" href="data:application/json;charset=utf-8,{}" download="cv.json" onmousedown="update_url()"></a>
   </li>
   <li id="btnhelp">
   	<a title="Help" onclick="show_help()"></a>

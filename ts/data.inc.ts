@@ -16,11 +16,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *****************************************************************************/
 
-/* CV structure */
+/* Data model for the CV */
 interface CVData
 {
+	header:     HeaderData,
 	personal?:  PersonalData,
 	education?: EducationData[]
+}
+
+interface HeaderData
+{
+	version:   string,
+	timestamp: Number
 }
 
 interface PersonalData

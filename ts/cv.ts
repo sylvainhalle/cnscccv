@@ -1,7 +1,12 @@
 
 
 /* Empty CV to start with */
-var CV:    CVData  = null;
+var CV:    CVData  = {
+		header: {
+				version:   "1.0",
+				timestamp: Date.now()
+		}
+};
 var DIRTY: boolean = false;
 
 /**
@@ -20,29 +25,14 @@ function load_file(content: string)
 /**
  * Saves the content of the CV to a file.
  */
-async function save_file()
+function update_url()
 {
-	const opts = {
-		suggestedName: 'cv.json', // Default file name
-		types: [
-				{
-						description: 'JSON files',
-						accept: { 'application/json': ['.json'] }
-				},
-		]};
-    try
-    {
-        const fileHandle = await (<any>window).showSaveFilePicker(opts);
-        const writable = await fileHandle.createWritable();
-        await writable.write(JSON.stringify(globalThis.CV));
-        await writable.close();
-    }
-    catch (error)
-    {
-        console.error('Error showing save file picker:', error);
-    }
+		globalThis.CV.header.timestamp = Date.now();
+		var e = document.querySelector('#btnsave>a') as HTMLLinkElement;
+		var serialized = btoa(JSON.stringify(globalThis.CV));
+		e.href = "data:application/json;charset=utf-8;base64," + serialized;
+		console.log(e.href);
 }
-
 
 /**
  * Fills the interface with CV data.
@@ -95,6 +85,8 @@ function handle_field_change(e: Event)
  */
 function on_page_load()
 {
+		var el_a = document.querySelector("#btnsave") as HTMLElement;
+		el_a.addEventListener("click", e => update_url(), {capture:true});
 		var elems = document.querySelectorAll("input.field");
 		for (var i = 0; i < elems.length; i++)
 		{
