@@ -1,4 +1,9 @@
 {
+	"header": {
+		"version"   : "1.0",
+		"timestamp" : 1234
+	},
+	
 	"personal": {
 		"first" : "Fred",
 		"last"  : "Flintstone",

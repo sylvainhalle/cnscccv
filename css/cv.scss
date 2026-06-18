@@ -92,8 +92,15 @@ section.category {
 			label {
 				width: 48px;
 				height: 48px;
+				display: block;
+			}
+			
+			#btnload_elem {
+				display: none;
 			}
 		}
+		
+		
 		
 		li#btnsave {
 			background-image: url("../img/icn-disk.#{$icon_type}");
@@ -102,10 +109,6 @@ section.category {
 		li#btnhelp {
 			background-image: url("../img/icn-interrogation.#{$icon_type}");
 		}
-	}
-
-	#btnload_elem {
-		display: none;
 	}
 }
 

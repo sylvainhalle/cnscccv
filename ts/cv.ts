@@ -31,7 +31,6 @@ function update_url()
 		var e = document.querySelector('#btnsave>a') as HTMLLinkElement;
 		var serialized = btoa(JSON.stringify(globalThis.CV));
 		e.href = "data:application/json;charset=utf-8;base64," + serialized;
-		console.log(e.href);
 }
 
 /**

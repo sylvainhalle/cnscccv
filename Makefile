@@ -28,12 +28,8 @@ img/%.png: img/%.svg
 	convert -background none $< $@
 
 inline:
-	@tmpdir=$$(mktemp -d); \
-	@cp html/template.html $$tmpdir/0.html; \
-	@echo $$tmpdir \
-	@sed 's|<!-- %%SCRIPT%% -->|<script type="text/javascript">$(<css/cv.css)</script>|g' < $(tmpdir)/0.html > $(tmpdir)/1.html \
-	@cp $(tmpdir)/1.html cv.html \
-	@rm -rf $(tmpdir)
+	./inline.sh
 
 clean:
 	rm -f js/cv.js css/cv.css $(PNG_ICONS)
+	rm -f ~/Downloads/cv*.json
