@@ -34,6 +34,9 @@ JavaScript.</strong></p>
   <li id="btnfilter">
   	<a title="Filter contents of CV" onclick="filter_params()"></a>
   </li>
+  <li id="btnrefresh">
+  	<a title="Refresh contents of CV" onclick="refresh()"></a>
+  </li>
   <li id="btnhelp">
   	<a title="Help" onclick="show_help()"></a>
   </li>
@@ -54,7 +57,7 @@ JavaScript.</strong></p>
 <!-- Education -->
 <section class="category" id="sec_education">
   <details>
-    <summary><span>Education</span><a href="#" onclick="add_entry('education')"></a></summary>
+    <summary><span>Education</span><a href="#" onclick="add_entry('EducationEntry')"></a></summary>
     <div id="education" class="category"></div>
   </details>
 </section>
@@ -65,11 +68,11 @@ JavaScript.</strong></p>
     <summary><span>Publications</span></summary>
     <div id="publications" class="category">
       <details>
-        <summary><span>Journal Papers  (<span id="publications_journals_length">0</span>)</span><a href="#" onclick="add_journal()"></a></summary>
+        <summary><span>Journal Papers  (<span id="publications_journals_length">0</span>)</span><a href="#" onclick="add_entry('JournalArticle')"></a></summary>
         <div id="publications_journals" class="category"></div>
       </details>
       <details>
-        <summary><span>Conference Papers (<span id="publications_conferences_length">0</span>)</span> <a href="#" onclick="add_conference()"></a></summary>
+        <summary><span>Conference Papers (<span id="publications_conferences_length">0</span>)</span> <a href="#" onclick="add_entry('ConferencePaper')"></a></summary>
         <div id="publications_conferences" class="category"></div>
       </details>
     </div>

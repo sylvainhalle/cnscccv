@@ -32,6 +32,7 @@ hgroup {
 	
 	p {
 		font-style: italic;
+		margin-top: -4pt;
 	}
 }
 
@@ -107,6 +108,7 @@ section > details > summary {
 			background-repeat: no-repeat;
 			box-shadow: 2px 2px #666;
 			margin-left: 6px;
+			cursor: pointer;
 		}
 		
 		li:first-child {
@@ -117,11 +119,17 @@ section > details > summary {
 			width: 100%;
 			height: 100%;
 			display: block;
+			cursor: pointer;
 		}
 		
 		li:hover {
 			transform: translateX(2px) translateY(2px);
 			box-shadow: none;
+		}
+		
+		li.greyedout:hover {
+			transform: none;
+			box-shadow: 2px 2px #666;
 		}
 		
 		li#btnnew {
@@ -148,6 +156,10 @@ section > details > summary {
 		
 		li#btnfilter {
 			background-image: url("../img/icn-bars-filter.#{$icon_type}");
+		}
+		
+		li#btnrefresh {
+			background-image: url("../img/icn-refresh.#{$icon_type}");
 		}
 		
 		li#btnhelp {

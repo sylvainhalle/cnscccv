@@ -13,7 +13,6 @@ Building the app
 - [Sass](https://sass-lang.com)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Minify](https://github.com/tdewolff/minify)
-- [Tidy](https://www.html-tidy.org/)
 
 ### To build
 

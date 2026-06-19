@@ -16,76 +16,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *****************************************************************************/
 
-/* Data model for the CV */
-/*
-interface CVData
-{
-	header:       HeaderData,
-	personal:     PersonalData,
-	education:    EducationData[],
-	publications: PublicationsData
-}
-
-interface HeaderData
-{
-	version:   string,
-	timestamp: Number
-}
-
-interface PersonalData
-{
-	first: string,
-	last:  string,
-	email: string
-}
-
-interface EducationData
-{
-	degree:  string,
-	start:   string,
-	end:     string,
-	school:  string,
-	city:    string,
-	country: string
-}
-
-interface PublicationsData
-{
-	journals:    JournalData[],
-	conferences: ConferenceData[]
-}
-
-interface JournalData
-{
-	key:       string,
-	title:     string,
-	author:    string,
-	journal:   string,
-	editor:    string,
-	pages:     string,
-	number:    string,
-	volume:    string,
-	year:      Number,
-	publisher: string
-	doi:       string,
-	impact:    Number
-}
-
-interface ConferenceData
-{
-	key:         string,
-	title:       string,
-	author:      string,
-	proceedings: string,
-	editor:      string,
-	pages:       string,
-	year:        Number,
-	publisher:   string
-	doi:         string,
-	rate:        Number
-}*/
-
 const SECTIONS = {
+	personal: {
+    path: "personal",
+    container: "personal",
+    empty: empty_Personal,
+    title: (e: any) => `Personal Information`,
+    fields: [
+      ["first", "First name"],
+      ["last", "Last name"],
+      ["email", "E-mail"]
+    ]
+  },
   education: {
     path: "education",
     container: "education",
@@ -108,7 +50,7 @@ const SECTIONS = {
       ["conferences", "Conference Papers"]
     ]
   },
-  journal: {
+  journals: {
     path: "publications.journals",
     container: "journals",
     empty: empty_JournalArticle,

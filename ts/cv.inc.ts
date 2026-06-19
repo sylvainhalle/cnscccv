@@ -32,76 +32,9 @@ function update_url()
  */
 function populate()
 {
-		populate_personal(true);
-		populate_education(true);
-		populate_publications(true);
-}
-
-function populate_personal(reset = false)
-{
-	var personal = globalThis.CV.personal as Personal;
-	var sec = document.querySelector("#personal");
-	if (personal != null && sec != null)
-	{
-			var html = personal_template(personal);
-			sec.innerHTML = (reset ? "" : sec.innerHTML) + html;
-	}
-}
-
-function populate_education(reset = false)
-{
-	var ed = globalThis.CV.education as EducationEntry[];
-	var sec = document.getElementById("education");
-	if (ed && sec != null)
-	{
-		var html = "";
-		for (var i = 0; i < ed.length; i++)
-		{
-				var e = ed[i];
-				html += education_template(e, i);
-		}
-		sec.innerHTML = (reset ? "" : sec.innerHTML) + html;
-	}
-}
-
-function populate_publications(reset = false)
-{
-		populate_conferences(reset);
-		populate_journals(reset);
-}
-
-function populate_conferences(reset = false)
-{
-	var ed = globalThis.CV.publications.conferences as ConferencePaper[];
-	var sec = document.getElementById("publications_conferences");
-	if (ed && sec != null)
-	{
-		var html = "";
-		for (var i = 0; i < ed.length; i++)
-		{
-				var e = ed[i];
-				html += conference_template(e, i);
-		}
-		sec.innerHTML = (reset ? "" : sec.innerHTML) + html;
-	}
-	document.getElementById("publications_conferences").innerHTML = "" + globalThis.CV.publications.conferences.length;
-}
-
-function populate_journals(reset = false)
-{
-	var ed = globalThis.CV.publications.journals as JournalArticle[];
-	var sec = document.getElementById("publications_journals");
-	if (ed && sec != null)
-	{
-		var html = "";
-		for (var i = 0; i < ed.length; i++)
-		{
-				var e = ed[i];
-				html += journal_template(e, i);
-		}
-		sec.innerHTML = (reset ? "" : sec.innerHTML) + html;
-	}
-	document.getElementById("publications_journals").innerHTML = "" + globalThis.CV.publications.journals.length;
+		populate_section("personal");
+		populate_section("education");
+		populate_section("publications");
 }
 
 function handle_field_change(event: Event): void {
@@ -134,36 +67,6 @@ function set_dirty(b: boolean)
 				globalThis.DIRTY = false;
 				add_class(document.getElementById("btnsave"), "greyedout");
 		}
-}
-
-function add_education()
-{
-		var e = empty_EducationEntry() as EducationEntry;
-		globalThis.CV.education.push(e);
-		var sec = document.getElementById("education");
-		var html = education_template(e, globalThis.CV.education.length - 1, "New Entry") as string;
-		sec.innerHTML = sec.innerHTML + html;
-		set_dirty(true);
-}
-
-function add_conference()
-{
-		var e = empty_ConferencePaper() as ConferencePaper;
-		globalThis.CV.publications.conferences.push(e);
-		var sec = document.getElementById("publications_conferences");
-		var html = conference_template(e, globalThis.CV.publications.conferences.length - 1, "New Entry") as string;
-		sec.innerHTML = sec.innerHTML + html;
-		set_dirty(true);
-}
-
-function add_journal()
-{
-		var e = empty_JournalArticle() as JournalArticle;
-		globalThis.CV.publications.journals.push(e);
-		var sec = document.getElementById("publications_journals");
-		var html = journal_template(e, globalThis.CV.publications.journals.length - 1, "New Entry") as string;
-		sec.innerHTML = sec.innerHTML + html;
-		set_dirty(true);
 }
 
 /**
