@@ -4,7 +4,7 @@ function text_field(path: string, caption: string, value: unknown): string {
        onchange="handle_field_change(event)">`;
 }
 
-function personal_template(entry: PersonalData)
+function personal_template(entry: Personal)
 {
 	return `<ul>
 	<li>${text_field("personal_first", "First name", entry.first)}</li>
@@ -15,7 +15,7 @@ function personal_template(entry: PersonalData)
 	`.trim();
 }
 
-function education_template(entry: EducationData, index: Number, title = entry.school)
+function education_template(entry: EducationEntry, index: Number, title = entry.school)
 {
 	return `<details>
 	<summary id="education_entry"><span>${title} (${entry.degree})</span></summary>
@@ -31,7 +31,7 @@ function education_template(entry: EducationData, index: Number, title = entry.s
 	`.trim();
 }
 
-function conference_template(entry: ConferenceData, index: Number, title = entry.title)
+function conference_template(entry: ConferencePaper, index: Number, title = entry.title)
 {
 	return `<details>
 	<summary>${title}</summary>
@@ -50,7 +50,7 @@ function conference_template(entry: ConferenceData, index: Number, title = entry
 	`.trim();
 }
 
-function journal_template(entry: JournalData, index: Number, title = entry.title)
+function journal_template(entry: JournalArticle, index: Number, title = entry.title)
 {
 	return `<details>
 	<summary>${title}</summary>

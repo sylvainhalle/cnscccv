@@ -3,8 +3,8 @@
         "strict": true
     },
     "files": [
-    	"cv.ts",
-    	"data.inc.ts",
+    	"cv.inc.ts",
+    	"data.gen.ts",
     	"dom.inc.ts",
     	"templates.inc.ts"
     ]

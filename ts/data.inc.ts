@@ -17,6 +17,7 @@
  *****************************************************************************/
 
 /* Data model for the CV */
+/*
 interface CVData
 {
 	header:       HeaderData,
@@ -82,13 +83,13 @@ interface ConferenceData
 	publisher:   string
 	doi:         string,
 	rate:        Number
-}
+}*/
 
 const SECTIONS = {
   education: {
     path: "education",
     container: "education",
-    empty: get_empty_education,
+    empty: empty_EducationEntry,
     title: (e: any) => `${e.school} (${e.degree})`,
     fields: [
       ["school", "Institution"],
@@ -96,72 +97,29 @@ const SECTIONS = {
       ["start", "Start"],
       ["end", "End"]
     ]
-  }
+  },
+  publications: {
+    path: "publications",
+    container: "publications",
+    empty: empty_Publications,
+    title: (e: any) => `Publications`,
+    fields: [
+      ["journals", "Journal Papers"],
+      ["conferences", "Conference Papers"]
+    ]
+  },
+  journal: {
+    path: "publications.journals",
+    container: "journals",
+    empty: empty_JournalArticle,
+    title: (e: any) => `${e.title}`,
+    fields: [
+      ["title", "Title"],
+      ["author", "Degree"],
+      ["start", "Start"],
+      ["end", "End"]
+    ]
+  },
+  
 };
-
-function get_empty_cv(): CVData
-{
-	return {
-		header: {
-				version:   "1.0",
-				timestamp: Date.now()
-		},
-		personal: {
-				first: "",
-				last: "",
-				email: ""
-		},
-		education: [],
-		publications: {
-				journals: [],
-				conferences: []
-		}
-	};
-}
-
-function get_empty_education(): EducationData
-{
-		return {
-			degree:  "",
-			start:   "",
-			end:     "",
-			school:  "",
-			city:    "",
-			country: ""
-		}
-}
-
-function get_empty_conference(): ConferenceData
-{
-		return {
-	key:         "",
-	title:       "",
-	author:      "",
-	proceedings: "",
-	editor:      "",
-	pages:       "",
-	year:        null,
-	publisher:   "",
-	doi:         "",
-	rate:        null
-};
-}
-
-function get_empty_journal(): JournalData
-{
-		return {
-	key:       "",
-	title:     "",
-	author:    "",
-	journal:   "",
-	editor:    "",
-	pages:     "",
-	number:    "",
-	volume:    "",
-	year:      null,
-	publisher: "",
-	doi:       "",
-	impact:    null
-};
-}
 // :mode=javascript:tabSize=2:tabIndent=2:

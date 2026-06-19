@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sylvainhalle.github.io/cnscccv/schema/v0/cnscccv.schema.json",
+  "title": "CNSCCCV CV file",
+  "type": "object",
+  "required": ["header", "personal", "education", "publications"],
+  "properties": {
+    "$schema": { "type": "string" },
+
+    "header": {
+      "type": "object",
+      "required": ["version", "timestamp"],
+      "properties": {
+        "version": { "type": "string" },
+        "timestamp": { "type": "number" }
+      },
+      "additionalProperties": true
+    },
+
+    "personal": {
+      "$ref": "#/$defs/personal"
+    },
+
+    "education": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/educationEntry" }
+    },
+
+    "publications": {
+      "type": "object",
+      "required": ["journals", "conferences"],
+      "properties": {
+        "journals": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/journalArticle" }
+        },
+        "conferences": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/conferencePaper" }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+
+  "$defs": {
+    "personal": {
+      "type": "object",
+      "required": ["first", "last", "email"],
+      "properties": {
+        "first": { "type": "string" },
+        "last": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      },
+      "additionalProperties": true
+    },
+
+    "educationEntry": {
+      "type": "object",
+      "required": ["degree", "school", "start"],
+      "properties": {
+        "degree": { "type": "string", "description": "The degree obtained" },
+        "start": { "type": "string", "description": "The start date of this degree" },
+        "end": { "type": "string", "description": "The end date of this degree" },
+        "school": { "type": "string", "description": "The institution that gives the degree" },
+        "city": { "type": "string", "description": "The city where the institution is located" },
+        "country": { "type": "string", "description" : "The country where the institution is located" }
+      },
+      "additionalProperties": true
+    },
+
+    "publicationBase": {
+      "type": "object",
+      "required": ["key", "title"],
+      "properties": {
+        "key": { "type": "string" },
+        "title": { "type": "string" },
+        "author": { "type": "string" },
+        "editor": { "type": "string" },
+        "pages": { "type": "string" },
+        "year": { "type": "integer" },
+        "publisher": { "type": "string" },
+        "doi": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": true
+    },
+
+    "conferencePaper": {
+      "allOf": [
+        { "$ref": "#/$defs/publicationBase" },
+        {
+          "type": "object",
+          "properties": {
+            "proceedings": { "type": "string" },
+            "rate": { "type": "number" }
+          }
+        }
+      ]
+    },
+
+    "journalArticle": {
+      "allOf": [
+        { "$ref": "#/$defs/publicationBase" },
+        {
+          "type": "object",
+          "properties": {
+            "journal": { "type": "string" },
+            "number": { "type": "string" },
+            "volume": { "type": "string" },
+            "impact": { "type": "number" }
+          }
+        }
+      ]
+    }
+  }
+}

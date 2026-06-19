@@ -7,3 +7,4 @@ cv.css
 .sass-cache
 cv.css.map
 icn*.png
+*.gen.ts
