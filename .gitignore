@@ -1,6 +1,7 @@
 *~
 \#*
 *.tmp
+js/
 cv.js
 cv.html
 cv.css

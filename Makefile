@@ -7,7 +7,7 @@ SCSS_SOURCES := $(wildcard css/*.scss)
 SVG_ICONS    := $(wildcard img/icn*.svg)
 PNG_ICONS    := $(SVG_ICONS:.svg=.png)
 
-.PHONY: all build compile icons clean inline print-icons
+.PHONY: all build compile icons clean inline print-icons test
 
 all: build
 
@@ -36,6 +36,9 @@ img/%.png: img/%.svg
 
 inline:
 	./inline.sh
+
+test:
+	deno test
 
 clean:
 	rm -f js/cv.js css/cv.css $(PNG_ICONS)

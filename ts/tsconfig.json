@@ -4,6 +4,7 @@
     },
     "files": [
     	"cv.inc.ts",
+    	"schema.inc.ts",
     	"data.gen.ts",
     	"dom.inc.ts",
     	"templates.inc.ts"

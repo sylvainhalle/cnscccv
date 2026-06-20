@@ -11,7 +11,7 @@ Building the app
 - POSIX shell (e.g. [Bash](https://www.gnu.org/software/bash/))
 - [Make](https://www.gnu.org/software/make/)
 - [Sass](https://sass-lang.com)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Deno](https://deno.com/)
 - [Minify](https://github.com/tdewolff/minify)
 
 ### To build
@@ -31,4 +31,4 @@ The Canadian (not-so) Common CV was developed and is maintained by
 Department of Computer Science and Mathematics at
 [Université du Québec à Chicoutimi](https://www.uqac.ca), Canada.
 
-<!-- :mode=markdown:wrap=soft: -->
+<!-- :mode=markdown:wrap=node:maxLineLen=76: -->

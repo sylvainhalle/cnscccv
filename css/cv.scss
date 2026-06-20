@@ -2,7 +2,7 @@ $col_cell   : #eef;
 $col_border : #aaa;
 $radius     : 3px;
 $icon_type  : 'svg';
-$btn_size   : 48px;
+$btn_size   : 32px;
 $bg_category: #eee;
 
 body {
@@ -152,6 +152,10 @@ section > details > summary {
 		
 		li#btnsave {
 			background-image: url("../img/icn-disk.#{$icon_type}");
+		}
+		
+		li#btnimport {
+			background-image: url("../img/icn-file-import.#{$icon_type}");
 		}
 		
 		li#btnfilter {
