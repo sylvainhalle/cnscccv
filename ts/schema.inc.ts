@@ -114,6 +114,12 @@ export function instantiate(s: SchemaRoot, e: SchemaElement): any
 		{
 				return instantiate_allof(s, <AllOfElement>e);
 		}
+		if ("$ref" in e)
+		{
+			const ref = get_entity_for((e as ReferenceElement)["$ref"]);
+			const d = get_definition(s, ref);
+			return d == null ? null : instantiate(s, d);
+  	}
 		return null;
 }
 
@@ -151,7 +157,7 @@ export function instantiate_primitive(s: SchemaRoot, e: TypedElement): any
 				return "";
 		if (e.type == "boolean")
 				return false;
-		if (e.type == "number" || e.type == "boolean")
+		if (e.type == "number" || e.type == "integer")
 				return 0;
 		return null;
 }
@@ -184,7 +190,7 @@ export function expand(s: SchemaRoot, e: SchemaElement): SchemaElement
 				const te = <TypedElement>e;
 				if (te.type == "object")
 				{
-						var oe = <ObjectElement>te;
+						let oe = { ... <ObjectElement>te } as ObjectElement;
 						for (var p in oe.properties)
 						{
 								if ("$ref" in oe.properties[p])
@@ -197,10 +203,11 @@ export function expand(s: SchemaRoot, e: SchemaElement): SchemaElement
 										}
 								}
 						}
+						return oe;
 				}
 				if (te.type == "array")
 				{
-						const ae = <ArrayElement>te;
+						let ae = { ... <ArrayElement>te} as ArrayElement;
 						if ("$ref" in ae.items)
 						{
 								const d = get_definition(s, get_entity_for((<ReferenceElement>ae.items)["$ref"]));
@@ -209,12 +216,13 @@ export function expand(s: SchemaRoot, e: SchemaElement): SchemaElement
 										ae.items = d;
 								}
 						}
+						return ae;
 				}
 		}
 		if ("allOf" in e)
 		{
 				const ae = <AllOfElement>e;
-				const ae_out = {
+				let ae_out = {
 						"type":       "object",
 						"required":   <string[]>[],
 						"properties": <Properties>{}
@@ -231,10 +239,16 @@ export function expand(s: SchemaRoot, e: SchemaElement): SchemaElement
 										aein_o = d;
 								}
 						}
-						
+						if ("type" in aein_o && (<TypedElement>aein_o).type == "object") // should normally be the case
+						{
+								const aein_obj = <ObjectElement>aein_o;
+								ae_out.required = [ ...ae_out.required, ...aein_obj.required ];
+								ae_out.properties = { ...ae_out.properties, ...aein_obj.properties };
+						}
 				}
+				return ae_out;
 		}
-		return e;
+		return { ... e} as SchemaElement;
 }
 
 export function get_entity_for(s: string): string

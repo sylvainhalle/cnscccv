@@ -17,7 +17,7 @@ compile: js/cv.js css/cv.css icons
 
 js/cv.js: $(TS_SOURCES) ts/data.gen.ts
 	mkdir -p js
-	tsc --outFile $@ $^ --removeComments
+	tsc --outFile $@ $^ --removeComments --module system --lib es2023,dom
 
 ts/data.gen.ts: schema/cnsccv.schema.json schema/tocode.ts
 	ts-node schema/tocode.ts schema/cnsccv.schema.json > ts/data.gen.ts
